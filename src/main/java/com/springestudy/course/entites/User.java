@@ -1,8 +1,12 @@
 package com.springestudy.course.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.aspectj.weaver.ast.Or;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 @Entity
 @Table(name = "tb_users")
@@ -14,6 +18,9 @@ public class User implements Serializable {
     private String email;
     private String phone;
     private String pass;
+
+    @OneToMany(mappedBy = "client")
+    private List<Order> orders = new ArrayList<>();
     public User(){
 
     }
@@ -64,6 +71,11 @@ public class User implements Serializable {
 
     public void setPass(String pass) {
         this.pass = pass;
+    }
+
+    @JsonIgnore
+    public List<Order> getOrders() {
+        return orders;
     }
 
     @Override
