@@ -2,7 +2,6 @@ package com.springestudy.course.entites;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.aspectj.weaver.ast.Or;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ public class User implements Serializable {
     private String name;
     private String email;
     private String phone;
-    private String pass;
+    private String password;
 
     @OneToMany(mappedBy = "client")
     private List<Order> orders = new ArrayList<>();
@@ -25,12 +24,12 @@ public class User implements Serializable {
 
     }
 
-    public User(Long id, String name, String email, String phone, String pass) {
+    public User(Long id, String name, String email, String phone, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
-        this.pass = pass;
+        this.password = password;
     }
 
     public Long getId() {
@@ -65,12 +64,12 @@ public class User implements Serializable {
         this.phone = phone;
     }
 
-    public String getPass() {
-        return pass;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @JsonIgnore
